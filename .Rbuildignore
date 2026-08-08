@@ -1,0 +1,7 @@
+^GUIDE_RSTUDIO\.md$
+^nettoyer_doublons\.R$
+^walking_skeleton\.R$
+^.*\.Rproj$
+^\.Rproj\.user$
+^LICENSE\.md$
+^_pkgdown\.yml$
