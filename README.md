@@ -1,5 +1,7 @@
 # mecore
 
+[![R-CMD-check](https://github.com/aristarquepeniel40-lab/mecore/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/aristarquepeniel40-lab/mecore/actions/workflows/R-CMD-check.yaml)
+
 **Fondations de l'écosystème [MEverse](#lécosystème-meverse) pour le suivi-évaluation (M&E).**
 
 `mecore` définit les classes de base — `Project`, `Metadata`, `Dataset`,
