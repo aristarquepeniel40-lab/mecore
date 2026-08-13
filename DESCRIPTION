@@ -32,3 +32,5 @@ Suggests:
     openxlsx,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+URL: https://github.com/aristarquepeniel40-lab/mecore
+BugReports: https://github.com/aristarquepeniel40-lab/mecore/issues
