@@ -27,4 +27,4 @@ generate_report <- S7::new_generic("generate_report", "x")
 #' @param x Un objet MEverse (Indicator, Dataset, Project, ...).
 #' @param ... Arguments additionnels passes aux methodes.
 #' @export
-describe <- S7::new_generic("describe", "x")
+me_describe <- S7::new_generic("me_describe", "x")
