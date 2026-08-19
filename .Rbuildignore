@@ -5,3 +5,5 @@
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^_pkgdown\.yml$
+^\.github$
+^ARCHITECTURE\.md$

@@ -10,9 +10,24 @@ import_logframe_xlsx(path)
 \item{path}{Chemin du fichier .xlsx.}
 }
 \value{
-Un \code{me_logframe}.
+Une liste \code{list(logframe, pending_indicators)} : \code{logframe}
+est un \code{me_logframe} (resultats sans indicateurs pour l'instant) ;
+\code{pending_indicators} est un \code{data.frame} (\code{resultat}, \code{indicateur},
+\code{unite}) listant les indicateurs a completer.
 }
 \description{
 Attend un fichier avec au minimum les colonnes :
 Objectif, Resultat, Indicateur, Unite (Hypotheses optionnelle).
+}
+\details{
+IMPORTANT (correctif -- bug trouve en testant avec le vrai openxlsx) :
+un indicateur importe depuis Excel n'a pas de \code{me_dataset} source, et
+l'invariant "pas d'indicateur orphelin" de \code{mecore::me_indicator}
+empeche d'en construire un valide a ce stade. La version precedente
+de cette fonction calculait les infos d'indicateurs importes (label,
+unite) puis les jetait silencieusement -- perte de donnees invisible,
+seulement visible en testant un vrai cycle export/import. Corrige :
+ces informations sont maintenant retournees a part, dans
+\code{pending_indicators}, pour etre completees via \code{attach_indicator()}
+une fois un vrai dataset disponible.
 }
