@@ -1,5 +1,36 @@
- url: ~
+url: https://aristarquepeniel40-lab.github.io/mecore/
+
 template:
   bootstrap: 5
 
- nb
+home:
+  title: "mecore : Fondations de l'ecosysteme MEverse"
+  links:
+  - text: Ecosysteme MEverse (ARCHITECTURE.md)
+    href: https://github.com/aristarquepeniel40-lab/mecore/blob/master/ARCHITECTURE.md
+  - text: Voir tous les packages MEverse
+    href: https://github.com/aristarquepeniel40-lab/meverse
+
+navbar:
+  structure:
+    left: [intro, reference, articles, news]
+    right: [search, github, ecosystem]
+  components:
+    ecosystem:
+      text: "Ecosysteme MEverse"
+      menu:
+      - text: "medata"
+        href: https://aristarquepeniel40-lab.github.io/medata/
+      - text: "meindicator"
+        href: https://aristarquepeniel40-lab.github.io/meindicator/
+      - text: "mecheck"
+        href: https://aristarquepeniel40-lab.github.io/mecheck/
+      - text: "mereport"
+        href: https://aristarquepeniel40-lab.github.io/mereport/
+      - text: "mesdg"
+        href: https://aristarquepeniel40-lab.github.io/mesdg/
+      - text: "meverse"
+        href: https://aristarquepeniel40-lab.github.io/meverse/
+    github:
+      icon: fab fa-github
+      href: https://github.com/aristarquepeniel40-lab/mecore
