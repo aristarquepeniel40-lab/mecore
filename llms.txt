@@ -1,0 +1,129 @@
+# mecore
+
+[![R-CMD-check](https://github.com/aristarquepeniel40-lab/mecore/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/aristarquepeniel40-lab/mecore/actions/workflows/R-CMD-check.yaml)
+
+**Fondations de l’écosystème [MEverse](#l%C3%A9cosyst%C3%A8me-meverse)
+pour le suivi-évaluation (M&E).**
+
+`mecore` définit les classes de base — `Project`, `Metadata`, `Dataset`,
+`Indicator`, `Logframe`, `Dashboard`, `Report` — utilisées par tous les
+autres packages MEverse. Il ne contient aucune logique métier (pas de
+calcul d’indicateurs, pas de génération de rapport) : uniquement la
+structure et les conventions communes.
+
+Architecture inspirée du [tidyverse](https://www.tidyverse.org/) : un
+écosystème de packages interopérables plutôt qu’un package monolithique.
+Construit avec [S7](https://rconsortium.github.io/S7/), le système objet
+nouvelle génération pour R.
+
+## Installation
+
+``` r
+
+install.packages("remotes")
+remotes::install_github("aristarquepeniel40-lab/mecore")
+```
+
+## Exemple rapide
+
+``` r
+
+library(mecore)
+
+meta <- me_metadata(
+  project_name = "Suivi agricole", organization = "Ministere de l'Agriculture",
+  country = "Benin", donor = "Banque mondiale", manager = "A. Segue",
+  start_date = as.Date("2026-01-01"), end_date = as.Date("2026-12-31"),
+  version = "1.0", description = "Suivi des rendements agricoles",
+  objectives = "Ameliorer les rendements", sdgs = c("2.3.1")
+)
+
+d <- me_dataset(
+  name = "exploitants",
+  data = data.frame(age = c(20, 35, 42), rendement = c(1200, 2400, 1800)),
+  metadata = meta
+)
+
+p <- me_project(name = "Suivi agricole", metadata = meta,
+                 datasets = list(d), indicators = list(), logframe = NULL)
+```
+
+## L’écosystème MEverse
+
+| Package | Rôle |
+|----|----|
+| **mecore** | Modèle de domaine (ce dépôt) |
+| [medata](https://github.com/aristarquepeniel40-lab/medata) | Import (CSV/Excel), validation de schéma, rapport de qualité |
+| [meindicator](https://github.com/aristarquepeniel40-lab/meindicator) | Calcul d’indicateurs, y compris désagrégés par groupe |
+| [mecheck](https://github.com/aristarquepeniel40-lab/mecheck) | Contrôle de cohérence à l’échelle d’un projet complet |
+| [mereport](https://github.com/aristarquepeniel40-lab/mereport) | Génération de rapports Markdown |
+
+Voir
+[`ARCHITECTURE.md`](https://aristarquepeniel40-lab.github.io/mecore/ARCHITECTURE.md)
+pour la conception détaillée, l’historique des décisions, et les leçons
+techniques rencontrées en construisant cet écosystème.
+
+## Licence
+
+MIT — voir
+[`LICENSE`](https://aristarquepeniel40-lab.github.io/mecore/LICENSE).
+
+# Package index
+
+## All functions
+
+- [`attach_indicator()`](https://aristarquepeniel40-lab.github.io/mecore/reference/attach_indicator.md)
+  : Rattacher un indicateur calcule a un resultat existant d'un logframe
+- [`build_provenance()`](https://aristarquepeniel40-lab.github.io/mecore/reference/build_provenance.md)
+  : Construire un bloc de provenance pour un rapport
+- [`check_schema()`](https://aristarquepeniel40-lab.github.io/mecore/reference/check_schema.md)
+  : Verifie qu'un data.frame respecte un me_schema
+- [`compute_indicators()`](https://aristarquepeniel40-lab.github.io/mecore/reference/compute_indicators.md)
+  : Calculer les indicateurs d'un objet
+- [`dataset_fingerprint()`](https://aristarquepeniel40-lab.github.io/mecore/reference/dataset_fingerprint.md)
+  : Empreinte (hash) d'un dataset, pour tracer la provenance d'un
+  rapport
+- [`export_logframe_xlsx()`](https://aristarquepeniel40-lab.github.io/mecore/reference/export_logframe_xlsx.md)
+  : Exporter un me_logframe vers un fichier Excel
+- [`generate_report()`](https://aristarquepeniel40-lab.github.io/mecore/reference/generate_report.md)
+  : Generer un rapport a partir d'un objet
+- [`import_logframe_xlsx()`](https://aristarquepeniel40-lab.github.io/mecore/reference/import_logframe_xlsx.md)
+  : Importer un cadre logique depuis un gabarit Excel usuel
+- [`me_dashboard()`](https://aristarquepeniel40-lab.github.io/mecore/reference/me_dashboard.md)
+  : Tableau de bord MEverse
+- [`me_dataset()`](https://aristarquepeniel40-lab.github.io/mecore/reference/me_dataset.md)
+  : Jeu de donnees MEverse
+- [`me_dependency_error()`](https://aristarquepeniel40-lab.github.io/mecore/reference/me_dependency_error.md)
+  : Lever une erreur de dependance manquante (ex. package Suggests
+  absent)
+- [`me_describe()`](https://aristarquepeniel40-lab.github.io/mecore/reference/me_describe.md)
+  : Decrire un objet MEverse en texte structure (voir idee IA-ready)
+- [`me_indicator()`](https://aristarquepeniel40-lab.github.io/mecore/reference/me_indicator.md)
+  : Indicateur MEverse
+- [`me_indicator_from_sdg()`](https://aristarquepeniel40-lab.github.io/mecore/reference/me_indicator_from_sdg.md)
+  : Instancier un me_indicator a partir d'un code ODD standard
+- [`me_logframe()`](https://aristarquepeniel40-lab.github.io/mecore/reference/me_logframe.md)
+  : Cadre logique MEverse
+- [`me_metadata()`](https://aristarquepeniel40-lab.github.io/mecore/reference/me_metadata.md)
+  : Metadonnees d'un projet MEverse
+- [`me_pipeline()`](https://aristarquepeniel40-lab.github.io/mecore/reference/me_pipeline.md)
+  : Pipeline MEverse — objet de premiere classe pour la tracabilite
+- [`me_project()`](https://aristarquepeniel40-lab.github.io/mecore/reference/me_project.md)
+  : Projet MEverse
+- [`me_report()`](https://aristarquepeniel40-lab.github.io/mecore/reference/me_report.md)
+  : Rapport MEverse
+- [`me_result()`](https://aristarquepeniel40-lab.github.io/mecore/reference/me_result.md)
+  : Resultat d'un cadre logique
+- [`me_schema()`](https://aristarquepeniel40-lab.github.io/mecore/reference/me_schema.md)
+  : Contrat de schema (ensemble de champs attendus)
+- [`me_schema_field()`](https://aristarquepeniel40-lab.github.io/mecore/reference/me_schema_field.md)
+  : Contrat de schema pour un Dataset
+- [`me_validate()`](https://aristarquepeniel40-lab.github.io/mecore/reference/me_validate.md)
+  : Valider un objet MEverse
+- [`me_validation_error()`](https://aristarquepeniel40-lab.github.io/mecore/reference/me_validation_error.md)
+  : Lever une erreur de validation metier MEverse
+- [`run_pipeline()`](https://aristarquepeniel40-lab.github.io/mecore/reference/run_pipeline.md)
+  : Executer un pipeline sur un objet, avec journalisation
+- [`search_sdg_indicator()`](https://aristarquepeniel40-lab.github.io/mecore/reference/search_sdg_indicator.md)
+  : Rechercher un indicateur standard ODD par code ou mot-cle
+
