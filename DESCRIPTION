@@ -1,6 +1,6 @@
 Package: mecore
 Title: Fondations de l'ecosysteme MEverse pour le suivi-evaluation
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: person("Aristarque Peniel", "Segue", email = "vous@example.com", role = c("aut", "cre"))
 Description: Classes et validateurs de base (S7) pour l'ecosysteme MEverse :
     Project, Metadata, Dataset, Indicator, Logframe, Dashboard, Report.
