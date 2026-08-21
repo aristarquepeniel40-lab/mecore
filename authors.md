@@ -7,7 +7,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/aristarquepeniel40-lab/mecore/blob/master/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/aristarquepeniel40-lab/mecore/blob/v1.0.0/DESCRIPTION)
 
 Segue A (2026). *mecore: Fondations de l'ecosysteme MEverse pour le
 suivi-evaluation*. R package version 1.0.0,
